@@ -15,11 +15,28 @@ class FlashCardApp {
         this.shuffleBtn = document.getElementById('shuffleBtn');
         this.deckButtons = document.querySelectorAll('[data-deck]');
 
+        // Create side indicators
+        this.createSideIndicators();
+
         // Bind event listeners
         this.bindEvents();
         
         // Load initial deck
         this.loadDeck(this.currentDeck);
+    }
+
+    createSideIndicators() {
+        // Create front indicator
+        const frontIndicator = document.createElement('div');
+        frontIndicator.className = 'card-side-indicator';
+        frontIndicator.textContent = 'Question';
+        document.querySelector('.card-front').prepend(frontIndicator);
+
+        // Create back indicator
+        const backIndicator = document.createElement('div');
+        backIndicator.className = 'card-side-indicator';
+        backIndicator.textContent = 'Answer';
+        document.querySelector('.card-back').prepend(backIndicator);
     }
 
     bindEvents() {
@@ -124,12 +141,6 @@ class FlashCardApp {
     }
 
     flipCard() {
-        const currentText = this.questionEl.textContent;
-        if (this.flashcard.classList.contains('is-flipped')) {
-            this.questionEl.textContent = currentText.split('').reverse().join('');
-        } else {
-            this.questionEl.textContent = currentText.split('').reverse().join('');
-        }
         this.flashcard.classList.toggle('is-flipped');
     }
 
