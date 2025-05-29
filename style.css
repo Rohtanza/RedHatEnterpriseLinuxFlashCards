@@ -5,11 +5,15 @@
     --card-bg: #2d2d2d;
     --text-color: #e0e0e0;
     --border-color: rgba(255, 255, 255, 0.125);
+    --highlight-color: #0d6efd;
+    --gradient-start: #2d2d2d;
+    --gradient-end: #363636;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 .card-container {
@@ -44,19 +48,37 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 2rem;
+    padding: 2.5rem;
     backface-visibility: hidden;
-    background-color: var(--card-bg);
+    background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
     border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow-y: auto;
     color: var(--text-color);
-    -webkit-backface-visibility: hidden; /* Safari fix */
+    -webkit-backface-visibility: hidden;
+}
+
+.card-front::before,
+.card-back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1rem;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.05)
+    );
+    pointer-events: none;
 }
 
 .card-back {
@@ -68,19 +90,30 @@ body {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    padding: 0.3rem 0.6rem;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 0.3rem;
-    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    background-color: rgba(13, 110, 253, 0.2);
+    border: 1px solid rgba(13, 110, 253, 0.3);
+    border-radius: 2rem;
+    font-size: 0.85rem;
     color: var(--text-color);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .question,
 .answer {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     line-height: 1.6;
     width: 100%;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.answer {
+    color: #8be9fd;
 }
 
 /* Responsive design */
@@ -92,55 +125,72 @@ body {
 
     .question,
     .answer {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 }
 
 /* Button styles */
 .btn {
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
     background-color: #3d3d3d;
     color: var(--text-color);
     border-color: var(--border-color);
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 .btn:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     background-color: #4d4d4d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 /* Active deck button styles */
 .deck-buttons .btn.active {
     transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    background-color: #0d6efd;
+    box-shadow: 0 0 20px rgba(13, 110, 253, 0.4);
+    background-color: var(--highlight-color);
+    border-color: var(--highlight-color);
 }
 
 /* Shuffle button active state */
 #shuffleBtn.active {
-    background-color: #0d6efd;
+    background-color: var(--highlight-color);
     color: white;
+    border-color: var(--highlight-color);
 }
 
-/* Progress tracker styles */
-.progress-tracker {
-    font-size: 1.1rem;
-    color: #a0a0a0;
-}
-
-/* Card content scroll customization */
+/* Custom scrollbar */
 .card-front::-webkit-scrollbar,
 .card-back::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 .card-front::-webkit-scrollbar-track,
 .card-back::-webkit-scrollbar-track {
-    background: #333;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
 }
 
 .card-front::-webkit-scrollbar-thumb,
 .card-back::-webkit-scrollbar-thumb {
-    background: #666;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+/* Progress tracker styles */
+.progress-tracker {
+    font-size: 1rem;
+    color: #a0a0a0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: 1.5rem;
 } 
