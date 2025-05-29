@@ -124,6 +124,12 @@ class FlashCardApp {
     }
 
     flipCard() {
+        const currentText = this.questionEl.textContent;
+        if (this.flashcard.classList.contains('is-flipped')) {
+            this.questionEl.textContent = currentText.split('').reverse().join('');
+        } else {
+            this.questionEl.textContent = currentText.split('').reverse().join('');
+        }
         this.flashcard.classList.toggle('is-flipped');
     }
 
