@@ -1,0 +1,160 @@
+{
+  "flashcards": [
+    {
+      "question": "What is Linux?",
+      "answer": "Linux is a family of free, open-source operating systems that share the same core (kernel)."
+    },
+    {
+      "question": "What is a Linux \"distribution\"?",
+      "answer": "A distribution (distro) bundles the Linux kernel with extra software, tools, and a package manager to make a complete OS."
+    },
+    {
+      "question": "What is Red Hat Enterprise Linux (RHEL)?",
+      "answer": "RHEL is Red Hat’s commercial Linux distribution, sold with a support subscription for businesses."
+    },
+    {
+      "question": "Why do companies pay for RHEL instead of using a free distro?",
+      "answer": "They get 24×7 vendor support, certified security updates, and a guaranteed 10-year life-cycle per release."
+    },
+    {
+      "question": "Which RHEL versions are common in 2025?",
+      "answer": "RHEL 8 and RHEL 9 are widely deployed; RHEL 10 was just released."
+    },
+    {
+      "question": "How long is each RHEL version supported?",
+      "answer": "About 10 years (5 years full + 5 years maintenance)."
+    },
+    {
+      "question": "Name three desktop or server tasks a system administrator does on RHEL.",
+      "answer": "Managing users, installing software, and starting or stopping services."
+    },
+    {
+      "question": "What is the command-line interface called in Linux?",
+      "answer": "The shell (often Bash)."
+    },
+    {
+      "question": "Which command lists files in the current directory?",
+      "answer": "`ls`"
+    },
+    {
+      "question": "Which command changes your working directory?",
+      "answer": "`cd <directory>`"
+    },
+    {
+      "question": "How do you show your present working directory?",
+      "answer": "`pwd`"
+    },
+    {
+      "question": "Which text editor ships in almost every Linux, including RHEL?",
+      "answer": "`vi` (or the friendlier alias `vim`)"
+    },
+    {
+      "question": "What package manager installs software in RHEL 8/9/10?",
+      "answer": "`dnf` (you may still see `yum`, which now redirects to dnf)."
+    },
+    {
+      "question": "Give a simple command to install the 'nano' editor.",
+      "answer": "`sudo dnf install nano`"
+    },
+    {
+      "question": "How do you update all packages to the latest versions?",
+      "answer": "`sudo dnf update`"
+    },
+    {
+      "question": "What is the root user?",
+      "answer": "The super-user account with full control over the system."
+    },
+    {
+      "question": "Why use `sudo` instead of logging in as root?",
+      "answer": "`sudo` lets regular users run single admin commands safely and keeps an audit trail."
+    },
+    {
+      "question": "Which command shows all running processes?",
+      "answer": "`ps aux` or the interactive `top`."
+    },
+    {
+      "question": "Name the modern service manager in RHEL.",
+      "answer": "`systemd` (controlled with `systemctl`)."
+    },
+    {
+      "question": "How would you start the web server service (httpd) immediately?",
+      "answer": "`sudo systemctl start httpd`"
+    },
+    {
+      "question": "And make httpd start automatically at boot?",
+      "answer": "`sudo systemctl enable httpd`"
+    },
+    {
+      "question": "Where are most system logs stored?",
+      "answer": "In the journal (`journalctl`) and legacy files under /var/log."
+    },
+    {
+      "question": "What built-in firewall tool does RHEL use?",
+      "answer": "`firewalld` (command: `firewall-cmd`)."
+    },
+    {
+      "question": "Give a one-liner to open port 80 (HTTP) permanently.",
+      "answer": "`sudo firewall-cmd --permanent --add-service=http && sudo firewall-cmd --reload`"
+    },
+    {
+      "question": "What is SELinux in one sentence?",
+      "answer": "A security layer that controls what each program can access, enabled by default on RHEL."
+    },
+    {
+      "question": "How can you check if SELinux is enforcing?",
+      "answer": "`getenforce`"
+    },
+    {
+      "question": "Name the directory that contains user home folders.",
+      "answer": "`/home`"
+    },
+    {
+      "question": "Where is the main system configuration directory?",
+      "answer": "`/etc`"
+    },
+    {
+      "question": "What is the default file system type used by RHEL installations?",
+      "answer": "XFS."
+    },
+    {
+      "question": "Which command shows disk usage in a human-friendly format?",
+      "answer": "`df -h`"
+    },
+    {
+      "question": "What virtualization toolset is included with RHEL for running VMs?",
+      "answer": "KVM with libvirt (`virt-manager` GUI or `virsh` CLI)."
+    },
+    {
+      "question": "What container engine replaces Docker on RHEL?",
+      "answer": "`podman` (it runs containers without needing a background daemon)."
+    },
+    {
+      "question": "What command pulls a basic Red Hat UBI container image?",
+      "answer": "`podman pull registry.access.redhat.com/ubi9/ubi`"
+    },
+    {
+      "question": "How do you find the RHEL version installed?",
+      "answer": "`cat /etc/redhat-release`"
+    },
+    {
+      "question": "If asked about \"subscription-manager\", what is the simple answer?",
+      "answer": "It’s the tool that registers a RHEL system to Red Hat for updates and support."
+    },
+    {
+      "question": "What graphical tool lets you manage a RHEL server from a browser?",
+      "answer": "Cockpit (open https://server-ip:9090)."
+    },
+    {
+      "question": "What is \"Insights\" in a nutshell?",
+      "answer": "A cloud service from Red Hat that warns about security or stability issues before they hit you."
+    },
+    {
+      "question": "Name one advantage of the RHEL 10 \"image mode\" even a beginner can mention.",
+      "answer": "It lets you deploy the whole OS as a pre-built image, making rollbacks and updates simpler—great for cloud or edge devices."
+    },
+    {
+      "question": "Give two reasons interviewers like RHEL knowledge even for beginners.",
+      "answer": "1) RHEL is common in enterprises, and 2) its skills translate well to other Linux systems."
+    }
+  ]
+}

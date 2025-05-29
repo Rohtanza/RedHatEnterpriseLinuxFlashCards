@@ -1,0 +1,164 @@
+{
+  "flashcards": [
+    {
+      "question": "Which two repositories make up a standard RHEL installation and what are they for?",
+      "answer": "BaseOS holds the core, stability-locked packages; AppStream delivers user-space software as modular streams that can move faster than BaseOS."
+    },
+    {
+      "question": "How do you enable the Node.js 18 module stream and install it in one command?",
+      "answer": "sudo dnf module install nodejs:18"
+    },
+    {
+      "question": "What command shows the last five DNF transactions and lets you roll one back?",
+      "answer": "dnf history list | head -n 6  (then)  dnf history undo <ID>"
+    },
+    {
+      "question": "Explain the difference between the systemd ‘rescue’ and ‘emergency’ targets.",
+      "answer": "Rescue loads basic system services and a single shell; Emergency gives only the root shell with no services or mounts—useful for critical repair."
+    },
+    {
+      "question": "How would you temporarily toggle the SELinux httpd_can_network_connect boolean?",
+      "answer": "sudo setsebool -P httpd_can_network_connect on"
+    },
+    {
+      "question": "Add HTTPS access only to the internal firewalld zone and reload.",
+      "answer": "sudo firewall-cmd --zone=internal --add-service=https --permanent && sudo firewall-cmd --reload"
+    },
+    {
+      "question": "Create an LVM snapshot called snap1 of a logical volume data_lv (20 % of the VG).",
+      "answer": "lvcreate -s -n snap1 -L 20%VG /dev/vg0/data_lv"
+    },
+    {
+      "question": "Use nmcli to create an 802.3ad bond (bond0) combining eth0 and eth1.",
+      "answer": "nmcli con add type bond ifname bond0 mode 802.3ad && nmcli con add type ethernet slave-type bond ifname eth0 master bond0 && nmcli con add type ethernet slave-type bond ifname eth1 master bond0"
+    },
+    {
+      "question": "List available Tuned performance profiles and activate the ‘virtual-guest’ profile.",
+      "answer": "tuned-adm list   (then)   sudo tuned-adm profile virtual-guest"
+    },
+    {
+      "question": "Register a fresh RHEL host with an activation key named ‘prod-key’.",
+      "answer": "sudo subscription-manager register --org=<ORG_ID> --activationkey=prod-key"
+    },
+    {
+      "question": "What is Extended Update Support (EUS) in one sentence?",
+      "answer": "EUS lets you stay on a chosen minor release (e.g., 9.4) and keep getting critical/security fixes for two years beyond the normal overlap."
+    },
+    {
+      "question": "Run a quick health scan of the system with Red Hat Insights from the CLI.",
+      "answer": "sudo insights-client --check-in"
+    },
+    {
+      "question": "Enable and start Cockpit so it survives reboots.",
+      "answer": "sudo systemctl enable --now cockpit.socket"
+    },
+    {
+      "question": "Generate a systemd unit file for a rootless Podman container named web.",
+      "answer": "podman generate systemd --name web --files --new"
+    },
+    {
+      "question": "Build a container image from a local Dockerfile using Buildah.",
+      "answer": "buildah bud -t myimage:latest ."
+    },
+    {
+      "question": "Copy an image from Docker Hub to a private registry with Skopeo.",
+      "answer": "skopeo copy docker://alpine:latest docker://registry.example.com/alpine:latest"
+    },
+    {
+      "question": "Create a qcow2 cloud image from a blueprint called ‘edge-vm’ with image builder.",
+      "answer": "composer-cli compose start edge-vm qcow2"
+    },
+    {
+      "question": "Show system logs from the previous boot only.",
+      "answer": "journalctl -b -1"
+    },
+    {
+      "question": "Which service replaces NTP on modern RHEL and what file defines servers?",
+      "answer": "chronyd; servers are listed in /etc/chrony.conf"
+    },
+    {
+      "question": "Before in-place upgrading RHEL 8 to 9, which command tests readiness?",
+      "answer": "leapp preupgrade --oracle"
+    },
+    {
+      "question": "Authenticate three nodes and create a Pacemaker cluster with pcs.",
+      "answer": "sudo pcs cluster auth node1 node2 node3 -u hacluster  (followed by)  sudo pcs cluster setup --name mycluster node1 node2 node3"
+    },
+    {
+      "question": "Enable VDO on /dev/sdc with a 1 TB logical volume called vdo1.",
+      "answer": "lvcreate --type vdo --name vdo1 --virtualsize 1T --size 200G vg0 /dev/sdc"
+    },
+    {
+      "question": "Create a Stratis pool (strpool) from /dev/sdb and a 50 GB FS (strfs).",
+      "answer": "stratis pool create strpool /dev/sdb && stratis filesystem create strpool strfs && mount /stratis/strpool/strfs /mnt"
+    },
+    {
+      "question": "What advantage do systemd timers have over classic cron jobs?",
+      "answer": "Timers can express dependencies, random delays, and are managed uniformly with other systemd units."
+    },
+    {
+      "question": "Encrypt a new block device /dev/sdd with LUKS2 and open it as secure1.",
+      "answer": "sudo cryptsetup luksFormat /dev/sdd && sudo cryptsetup open /dev/sdd secure1"
+    },
+    {
+      "question": "What are RHEL System Roles and why are they useful with Ansible?",
+      "answer": "They are vendor-maintained Ansible roles for common admin tasks (network, SELinux, storage), ensuring best-practice configurations."
+    },
+    {
+      "question": "Describe in one sentence how Kickstart and cloud-init complement each other.",
+      "answer": "Kickstart automates the base OS install, while cloud-init finishes instance-specific config when the VM first boots in the cloud."
+    },
+    {
+      "question": "Which file does GRUB2 read for kernel and boot parameters on RHEL?",
+      "answer": "/etc/default/grub (then grub2-mkconfig regenerates the real CFG)."
+    },
+    {
+      "question": "What is kpatch and when would you use it?",
+      "answer": "kpatch applies live kernel patches, letting you fix critical CVEs without rebooting during a maintenance window."
+    },
+    {
+      "question": "State one security benefit of running Podman in rootless mode.",
+      "answer": "Containers run in an unprivileged user namespace, so a breakout cannot gain real root on the host."
+    },
+    {
+      "question": "Find which RPM owns the file /usr/bin/rsync.",
+      "answer": "rpm -qf /usr/bin/rsync"
+    },
+    {
+      "question": "Which daemon reports SELinux denials in plain language in /var/log/messages?",
+      "answer": "setroubleshootd"
+    },
+    {
+      "question": "Contrast network teaming with bonding in one line.",
+      "answer": "Teaming is newer, user-space-managed with libteam; bonding is kernel-space and older but still widely used."
+    },
+    {
+      "question": "Add a persistent static route 10.20.0.0/24 via 192.168.1.1 using nmcli.",
+      "answer": "nmcli connection modify eth0 +ipv4.routes \"10.20.0.0/24 192.168.1.1\" && nmcli connection up eth0"
+    },
+    {
+      "question": "What service automatically mounts NFS shares on demand in RHEL?",
+      "answer": "autofs (configured in /etc/auto.master and related maps)."
+    },
+    {
+      "question": "Where would you place a drop-in file to raise a service's LimitNOFILE in systemd?",
+      "answer": "/etc/systemd/system/<service>.service.d/override.conf"
+    },
+    {
+      "question": "Why use multi-stage builds when creating images with Podman or Buildah?",
+      "answer": "They keep the final image small and secure by discarding build-time dependencies."
+    },
+    {
+      "question": "Where are the Red Hat GPG keys stored locally for RPM verification?",
+      "answer": "/etc/pki/rpm-gpg"
+    },
+    {
+      "question": "Set the system-wide crypto policy to FIPS mode.",
+      "answer": "sudo update-crypto-policies --set FIPS"
+    },
+    {
+      "question": "Display the currently active Tuned profile.",
+      "answer": "tuned-adm active"
+    }
+  ]
+}

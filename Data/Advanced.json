@@ -1,0 +1,204 @@
+{
+  "flashcards": [
+    {
+      "question": "What is Red Hat Enterprise Linux (RHEL)?",
+      "answer": "RHEL is a commercially supported, subscription-based Linux distribution from Red Hat designed for enterprise workloads and long-term stability."
+    },
+    {
+      "question": "Which major RHEL versions are currently supported?",
+      "answer": "RHEL 8, RHEL 9 (latest minor 9.6), and RHEL 10 (GA May 2025) are all in their full-support phases."
+    },
+    {
+      "question": "How long is Red Hat’s life-cycle guarantee for each major RHEL release?",
+      "answer": "10 years: 5 years of Full Support followed by 5 years of Maintenance Support, with optional Extended Life add-ons."
+    },
+    {
+      "question": "Name four hardware architectures officially supported by RHEL 10.",
+      "answer": "x86-64, AArch64 (ARM 64), IBM POWER LE, and IBM Z; RISC-V is available as a developer preview."
+    },
+    {
+      "question": "What is the key difference between RHEL and CentOS Stream?",
+      "answer": "CentOS Stream is a rolling preview upstream of RHEL, while RHEL is the hardened, commercially supported downstream with a fixed life-cycle and SLA."
+    },
+    {
+      "question": "Which two top-level repositories ship with every RHEL release after version 8?",
+      "answer": "BaseOS (core, static) and AppStream (user-space packages delivered as module streams)."
+    },
+    {
+      "question": "What command registers a new RHEL server to Red Hat subscription services?",
+      "answer": "subscription-manager register --username <RHN_ID> --password <PASSWORD>"
+    },
+    {
+      "question": "Explain Extended Update Support (EUS).",
+      "answer": "EUS lets customers stay on a specific minor release (e.g. 9.4) and receive critical/security errata for 24 months beyond the normal overlap."
+    },
+    {
+      "question": "Which package manager replaced yum in RHEL 8?",
+      "answer": "DNF (Dandified Yum) became the default frontend; yum is now a symlink to dnf."
+    },
+    {
+      "question": "Give a one-line definition of RPM.",
+      "answer": "RPM is the low-level package format and database used by RHEL for installing, verifying, and querying software."
+    },
+    {
+      "question": "What system and service manager replaced traditional SysV init in RHEL 7?",
+      "answer": "systemd"
+    },
+    {
+      "question": "Which command shows services that failed to start during the last boot under systemd?",
+      "answer": "systemctl --failed"
+    },
+    {
+      "question": "Name the default firewall framework in RHEL 8/9/10.",
+      "answer": "firewalld (using nftables as its back-end)"
+    },
+    {
+      "question": "What security mechanism enforces Mandatory Access Control by default on RHEL?",
+      "answer": "SELinux (Security-Enhanced Linux) in enforcing mode."
+    },
+    {
+      "question": "How do you temporarily set SELinux to permissive mode?",
+      "answer": "setenforce 0 (persists only until reboot)."
+    },
+    {
+      "question": "What command lists SELinux policy violations for the httpd domain?",
+      "answer": "ausearch -m avc -c httpd"
+    },
+    {
+      "question": "Which RHEL tool provides predictive analytics and remediation guidance?",
+      "answer": "Red Hat Insights (SaaS, included with every subscription)."
+    },
+    {
+      "question": "Name the browser-based administrative console enabled by default on RHEL.",
+      "answer": "Cockpit (listens on port 9090)."
+    },
+    {
+      "question": "Which Red Hat product manages on-prem content, patching, provisioning, and integrates with Insights?",
+      "answer": "Red Hat Satellite."
+    },
+    {
+      "question": "State the default file system for RHEL installations and one key feature.",
+      "answer": "XFS; it supports online growth but cannot shrink."
+    },
+    {
+      "question": "What userspace-driven storage manager introduced in RHEL 8 offers pooled volumes with snapshots?",
+      "answer": "Stratis."
+    },
+    {
+      "question": "Which command sequence creates a 100 % LVM logical volume and mounts it on /data?",
+      "answer": "pvcreate /dev/sdb && vgcreate data_vg /dev/sdb && lvcreate -n data_lv -l 100%FREE data_vg && mkfs.xfs /dev/data_vg/data_lv && echo '/dev/data_vg/data_lv /data xfs defaults 0 0' >> /etc/fstab && mount -a"
+    },
+    {
+      "question": "What virtualization technology forms the basis of RHEL’s hypervisor stack?",
+      "answer": "KVM (Kernel-based Virtual Machine) managed through libvirt (virsh, virt-manager)."
+    },
+    {
+      "question": "Which rootless container runtime replaces Docker on RHEL?",
+      "answer": "Podman (with Buildah for builds and Skopeo for image copying)."
+    },
+    {
+      "question": "What is UBI and why is it important?",
+      "answer": "Universal Base Image—RHEL container base images that can be freely redistributed without a paid subscription while remaining fully supported when run on a subscribed host."
+    },
+    {
+      "question": "Explain image builder in one sentence.",
+      "answer": "Image builder (composer-cli or web UI) creates customized RHEL images—ISO, QCOW2, VMDK, AMI, or OSTree commits—for bare-metal, cloud, or edge deployments."
+    },
+    {
+      "question": "What brand-new deployment mode did RHEL 10 introduce?",
+      "answer": "Image mode (bootc): the entire OS is delivered as an immutable OCI image, suitable for GitOps and edge use cases."
+    },
+    {
+      "question": "Which two commands generate a complete support bundle for Red Hat?",
+      "answer": "sosreport and oc sosreport (for OpenShift nodes)."
+    },
+    {
+      "question": "Name three CLI tools useful for performance troubleshooting.",
+      "answer": "top/htop, vmstat, iostat; additionally, PCP (Performance Co-Pilot) for long-term metrics."
+    },
+    {
+      "question": "What is Leapp used for?",
+      "answer": "In-place major version upgrades, such as RHEL 8 → 9 or 9 → 10."
+    },
+    {
+      "question": "Which RHEL feature allows live kernel patching without reboot?",
+      "answer": "kpatch (supported for selected critical CVEs)."
+    },
+    {
+      "question": "Describe the RHEL high-availability cluster stack.",
+      "answer": "Pacemaker for resource management, Corosync for messaging, configured via pcs; supports GFS2 shared storage and quorum devices."
+    },
+    {
+      "question": "What command configures a VLAN interface using NetworkManager CLI?",
+      "answer": "nmcli con add type vlan con-name vlan10 dev eth0 id 10 ip4 192.168.10.2/24 gw4 192.168.10.1"
+    },
+    {
+      "question": "Which utility applies predefined performance tuning profiles on RHEL?",
+      "answer": "tuned (managed via tuned-adm)."
+    },
+    {
+      "question": "What does the command `systemd-analyze blame` show?",
+      "answer": "A list of services and how long each took to start during the boot process."
+    },
+    {
+      "question": "How can a system administrator freeze the journald logs to disk persistence?",
+      "answer": "Create /var/log/journal and restart systemd-journald to enable persistent logging."
+    },
+    {
+      "question": "Name the identity and authentication solution bundled with RHEL.",
+      "answer": "IdM (FreeIPA) providing Kerberos, LDAP, DNS, and certificate services."
+    },
+    {
+      "question": "What are clevis and tang used for in RHEL security?",
+      "answer": "They implement network-bound disk encryption, unlocking LUKS volumes automatically when the system reaches a trusted network."
+    },
+    {
+      "question": "Which command line retrieves only security updates with DNF?",
+      "answer": "dnf update --security"
+    },
+    {
+      "question": "What is rpm-ostree and where is it used in RHEL?",
+      "answer": "rpm-ostree is a hybrid image/package deployment model delivering atomic, transactional updates—used by ‘RHEL for Edge’ systems."
+    },
+    {
+      "question": "Why is rootless containers considered a security advantage?",
+      "answer": "Because containers run under an unprivileged user namespace, reducing the risk of root-level escape or host compromise."
+    },
+    {
+      "question": "What RHEL tool scans and remediates compliance against DISA-STIG or CIS benchmarks?",
+      "answer": "OpenSCAP (`oscap`) with provided security profiles."
+    },
+    {
+      "question": "How do you list enabled module streams on a RHEL system?",
+      "answer": "dnf module list --enabled"
+    },
+    {
+      "question": "Which subscription program gives developers no-cost RHEL access for up to 16 nodes?",
+      "answer": "Red Hat Enterprise Linux Individual Developer Subscription."
+    },
+    {
+      "question": "What command starts an interactive rootless Podman container based on the latest UBI 9 image?",
+      "answer": "podman run --rm -it registry.access.redhat.com/ubi9/ubi bash"
+    },
+    {
+      "question": "Give an example of using firewall-cmd to allow HTTPS permanently.",
+      "answer": "firewall-cmd --permanent --add-service=https && firewall-cmd --reload"
+    },
+    {
+      "question": "Which RHEL storage feature provides inline deduplication and compression to save disk space?",
+      "answer": "VDO (Virtual Data Optimizer)."
+    },
+    {
+      "question": "Mention two reasons enterprises choose RHEL over community rebuilds.",
+      "answer": "1) Access to Red Hat’s 24×7 support, security errata, and proactive Insights; 2) certified hardware/software stacks and compliance (FIPS, Common Criteria)."
+    },
+    {
+      "question": "How would you briefly describe the purpose of Kickstart?",
+      "answer": "Kickstart automates unattended RHEL installations via predefined configuration files."
+    },
+    {
+      "question": "Name the default logging location for SELinux AVC denials.",
+      "answer": "/var/log/audit/audit.log"
+    }
+  ]
+}
