@@ -8,6 +8,7 @@ class FlashCardApp {
 
         // DOM Elements
         this.flashcard = document.querySelector('.flashcard');
+        this.cardInner = document.querySelector('.card-inner');
         this.questionEl = document.querySelector('.question');
         this.answerEl = document.querySelector('.answer');
         this.currentCardEl = document.getElementById('currentCard');
@@ -117,7 +118,10 @@ class FlashCardApp {
 
         this.questionEl.textContent = card.question;
         this.answerEl.textContent = card.answer;
+        
+        // Reset card to front side when changing cards
         this.flashcard.classList.remove('is-flipped');
+        
         this.updateProgress();
     }
 
